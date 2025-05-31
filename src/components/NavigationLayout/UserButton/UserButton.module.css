@@ -1,0 +1,21 @@
+.userButton {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 0px;
+}
+
+.userButton:hover {
+  background-color: rgba(4, 109, 196, 0.5);
+}
+.userButton:focus {
+  outline: none;
+}
+
+.userButtonText {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 10px;
+}

@@ -1,20 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./assets/styles/global.css";
-import { createBrowserRouter, RouterProvider } from "react-router";
-import DashboardPage from "./pages/dashboard/DashboardPage.tsx";
-import LoginPage from "./pages/auth/LoginPage.tsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { routes } from "@/utils/constants/routes.constant";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <DashboardPage />,
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-]);
+const router = createBrowserRouter(routes);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
