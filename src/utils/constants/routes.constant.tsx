@@ -5,6 +5,7 @@ import HomePage from "@/pages/home/HomePage";
 import ProductsPage from "@/pages/products/ProductsPage";
 import OrdersPage from "@/pages/orders/OrdersPage";
 import SettingsPage from "@/pages/settings/SettingsPage";
+import ProfilePage from "@/pages/profile/ProfilePage";
 
 export const routes = [
   {
@@ -39,6 +40,12 @@ export const routes = [
         index: true,
         element: <SettingsPage />,
         title: "Configuración",
+      },
+      {
+        path: "/profile",
+        index: true,
+        element: <ProfilePage />,
+        title: "Mi perfil",
       },
     ],
   },

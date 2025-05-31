@@ -5,25 +5,24 @@ import styles from "./NavigationLayout.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import UserButton from "./UserButton/UserButton";
+import { useBreadcrumbItems } from "@/hooks/useBreadcrumItems";
 
 const NavigationLayout = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   const navigate = useNavigate();
+  const items = useBreadcrumbItems();
 
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout className={styles.layout}>
       <Header className={styles.header}>
         <div className={styles.headerLeftItem}>
-          <Link to="/home" style={{ display: "flex", alignItems: "center" }}>
+          <Link to="/home" className={styles.headerLogo}>
             <img src="/img/logo-banner.png" alt="" width={180} />
           </Link>
 
-          <Breadcrumb
-            items={[{ title: "Inicio" }]}
-            className={styles.breadcrumb}
-          />
+          <Breadcrumb items={items} className={styles.breadcrumb} />
         </div>
 
         <div className={styles.headerLeftRight}>

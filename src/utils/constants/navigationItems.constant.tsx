@@ -4,6 +4,7 @@ import {
   ProductOutlined,
   HomeOutlined,
   SettingOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 
@@ -40,5 +41,10 @@ export const navigationItems: MenuItem[] = [
     key: "/settings",
     icon: <SettingOutlined />,
     label: "Configuración",
+  },
+  {
+    key: "/logout",
+    icon: <LogoutOutlined />,
+    label: "Cerrar sesión",
   },
 ];
