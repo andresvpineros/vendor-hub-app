@@ -44,6 +44,7 @@ const NavigationLayout = () => {
               <a
                 href="https://www.linkedin.com/in/andresvpineros/"
                 target="_blank"
+                style={{ color: "#068fff" }}
               >
                 @Brandon Vargas
               </a>
