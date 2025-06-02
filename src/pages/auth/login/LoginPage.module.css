@@ -42,6 +42,10 @@
   font-weight: 500;
 }
 
+.loginButton:focus {
+  outline: none;
+}
+
 .developmentInfo {
   margin-top: 10px;
   font-size: small;

@@ -1,8 +1,10 @@
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, Flex, Spin, notification } from "antd";
 import type { FormProps } from "antd";
 import styles from "./LoginPage.module.css";
 import { formSchema } from "@/modules/auth/ui/schemas/login.schema";
 import { useNavigate } from "react-router-dom";
+import { UserSignsInUseCase } from "@/modules/auth/domain/use_cases/userSignsIn.usecase";
+import { useState } from "react";
 
 type FieldType = {
   email?: string;
@@ -18,14 +20,39 @@ type FormItemType = {
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [api, contextHolder] = notification.useNotification();
 
-  const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-    console.log("Success:", values);
-    navigate("/home");
+  const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
+    const { email = "", password = "" } = values;
+    const useCase = new UserSignsInUseCase();
+    setLoading(true);
+
+    try {
+      const result = await useCase.call(email, password);
+
+      if (result.success) {
+        setLoading(false);
+        navigate("/home");
+      } else {
+        setLoading(false);
+        api.error({
+          message: result.message,
+          placement: "bottomRight",
+        });
+      }
+    } catch (error) {
+      setLoading(false);
+      api.error({
+        message: error instanceof Error ? error.message : "Error signing in",
+        placement: "bottomRight",
+      });
+    }
   };
 
   return (
     <div className={styles.container}>
+      {contextHolder}
       <div className={styles.formContainer}>
         <div style={{ textAlign: "center" }}>
           <img src="/img/logo-general.png" alt="" width={200} />
@@ -70,13 +97,17 @@ const LoginPage = () => {
             <Checkbox>Recuérdame</Checkbox>
           </Form.Item>
           <Form.Item label={null}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className={styles.loginButton}
-            >
-              Ingresar
-            </Button>
+            <Flex gap="left">
+              <Spin spinning={loading} delay={100}>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className={styles.loginButton}
+                >
+                  Ingresar
+                </Button>
+              </Spin>
+            </Flex>
           </Form.Item>
           <span style={{ color: "#068fff", fontWeight: 600 }}>
             Olvidaste tu contraseña?
