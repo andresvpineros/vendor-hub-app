@@ -14,6 +14,12 @@ const NavigationLayout = () => {
   const navigate = useNavigate();
   const items = useBreadcrumbItems();
 
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
+
   return (
     <Layout className={styles.layout}>
       <Header className={styles.header}>
@@ -36,7 +42,13 @@ const NavigationLayout = () => {
             defaultSelectedKeys={["/"]}
             items={navigationItems}
             className="custom-menu"
-            onClick={(e) => navigate(e.key)}
+            onClick={(e) => {
+              if (e.key === "/logout") {
+                handleLogout();
+              } else {
+                navigate(e.key);
+              }
+            }}
           />
           <div className={styles.sidebarFooter}>
             <span className={styles.developmentInfo}>

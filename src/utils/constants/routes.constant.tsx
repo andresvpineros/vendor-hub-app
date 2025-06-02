@@ -6,10 +6,17 @@ import ProductsPage from "@/pages/products/ProductsPage";
 import OrdersPage from "@/pages/orders/OrdersPage";
 import SettingsPage from "@/pages/settings/SettingsPage";
 import ProfilePage from "@/pages/profile/ProfilePage";
+import { AuthProvider } from "@/providers/AuthProvider";
 
 export const routes = [
   {
-    element: <NavigationLayout />,
+    element: (
+      <>
+        <AuthProvider>
+          <NavigationLayout />
+        </AuthProvider>
+      </>
+    ),
     children: [
       {
         path: "/home",
@@ -50,8 +57,14 @@ export const routes = [
     ],
   },
   {
-    path: "/login",
-    element: <LoginPage />,
-    title: "Login",
+    element: <AuthProvider />,
+    children: [
+      {
+        path: "/login",
+        index: true,
+        element: <LoginPage />,
+        title: "Login",
+      },
+    ],
   },
 ];

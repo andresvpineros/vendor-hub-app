@@ -43,7 +43,7 @@ export const navigationItems: MenuItem[] = [
     label: "Configuración",
   },
   {
-    key: "/login",
+    key: "/logout",
     icon: <LogoutOutlined />,
     label: "Cerrar sesión",
   },
