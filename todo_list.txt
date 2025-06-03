@@ -1,0 +1,58 @@
+1. AUTH MODULE
+    - Create Login Page ✅
+    - Validate form fields ✅
+    - Simulate login:
+        - Use localStorage to authenticate ✅
+        - Store user info in Redux
+    - Redirect to home on success ✅
+    - Add logout functionality ✅
+    - Show error messages on wrong credentials or errors ✅
+    - Protect private routes with auth validation ✅
+
+2. HOME MODULE
+    - Show a welcome to the user
+    - Show quick access to information using cards with metrics
+    - Show news or updates maybe consuming an API
+    - Set quick navigation to specify modules
+
+3. PRODUCTS MODULE
+    - Show a table with the products 
+    - Show a button to create new ones
+    - Filter functionality
+    - Delete product by confirmation
+    - Store everything in the localStorage and delete once logout
+    - Show notifications on actions
+    - Update product information
+
+4. ORDERS MODULE
+    - Show a table with the orders
+    - Add a Filter
+    - Add information about the orders in general
+    - Update state of an order 
+    - Simulate orders with mocked data
+    - Visual state of orders 
+    - Create a button that deploys a form to simulate the creation of a new order
+
+5. DASHBOARD MODULE 
+    - Show cards with information about Total orders, current users, etc...
+    - Simulate data in localStorage 
+    - Use charts
+    - Add filters to the charts 
+    - Export data in a CSV
+
+6. SETTINGS MODULE 
+    - Create an accordion style to the configurations like theme, language, etc... 
+    - Persists settings in localStorage
+
+7. PROFILE MODULE
+    - Display user avatar, name, email, etc...
+    - Allow update the user
+    - Save to localStorage
+
+8. SUPPORT MODULE
+    - Redirect to Github repository for requests
+
+
+EXTRAS:
+    - Add notifications option in the navbar
+    
